@@ -214,19 +214,37 @@ public:
     }
 
     virtual Page* new_page(boost::upgrade_lock<Page>& lock) override
-    {
-        auto id = get_next_id();
-        std::unique_lock<std::shared_mutex> guard(mutex);
-        page_map[id] = std::make_unique<Page>(id, page_size);
-        Page* page = page_map[id].get();
-        
-        // Assign to default section initially
-        page_section_map[id] = -1; // -1 means default section
-        default_section->add_page(id);
-        
-        lock = boost::upgrade_lock<Page>(*page);
-        return page;
-    }
+	{
+		auto id = get_next_id();
+		std::unique_lock<std::shared_mutex> guard(mutex);
+		
+		// ADDED: Check if we need to evict pages based on cache size
+		size_t current_size = page_map.size() * page_size;
+		while (current_size + page_size > total_cache_size) {
+			PageID victim_id;
+			if (find_victim(victim_id)) {
+				// Remove the victim from cache
+				auto victim_it = page_map.find(victim_id);
+				if (victim_it != page_map.end()) {
+					page_map.erase(victim_it);
+					current_size -= page_size;
+				}
+			} else {
+				// If no victim is found, break to avoid infinite loop
+				break;
+			}
+		}
+		
+		page_map[id] = std::make_unique<Page>(id, page_size);
+		Page* page = page_map[id].get();
+		
+		// Assign to default section initially
+		page_section_map[id] = -1; // -1 means default section
+		default_section->add_page(id);
+		
+		lock = boost::upgrade_lock<Page>(*page);
+		return page;
+	}
 
     virtual Page* fetch_page(PageID id, boost::upgrade_lock<Page>& lock) override
     {

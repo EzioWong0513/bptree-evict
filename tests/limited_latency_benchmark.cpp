@@ -353,16 +353,16 @@ void run_multi_benchmark(
     std::cout << "Page Size: " << page_size << " bytes\n";
     
     // Parameters for each test
-    const int NUM_INSERTS = 500000;  // Increased from 100000 to create more eviction pressure    
-    const int NUM_LOOKUPS = 50000;   // Increased from 20000
+    const int NUM_INSERTS = 1000000;  // Increased from 100000 to create more eviction pressure    
+    const int NUM_LOOKUPS = 500000;   // Increased from 20000
     const int NUM_RANGE_SCANS = 200;
-    const int RANGE_SIZE = 500;
+    const int RANGE_SIZE = 5000;
     const int NUM_MIXED_OPS = 20000;
     
     // Define a smaller cache size to force evictions
     // For a 500K dataset with 4KB pages, we'd need ~2GB for full dataset
     // Set cache size to be much smaller to force evictions
-    const size_t CACHE_SIZE_BYTES = 128 * 1024;  // 1MB cache (small enough to cause evictions)
+    const size_t CACHE_SIZE_BYTES = 64 * 1024;  // 1MB cache (small enough to cause evictions)
     std::cout << "Using restricted cache size: " << (CACHE_SIZE_BYTES / 1024) << " KB\n";
     
     // Test with different latency levels

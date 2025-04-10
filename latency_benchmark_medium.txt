@@ -1,0 +1,43 @@
+Far Memory Latency Benchmark Results (medium latency)
+==============================================
+
+Configuration:
+  - Benchmark iterations: 2
+  - Page size: 4096 bytes
+  - Cache size: 64 KB
+  - Latency level: medium
+
+
+Performance Results (averaged over 2 iterations):
+--------------------------------------------------------
+Operation               MemCache   MiraCache       Diff (%)  MC StdDev  MC StdDev
+---------------------------------------------------------------------------------
+AVERAGE TIMES (ms)
+Insert                   3158.06     3272.88           3.64      22.03      17.88
+Point Lookup              482.47      477.53          -1.02       0.37       1.50
+Range Scan                373.59      372.54          -0.28       0.21       1.09
+Mixed Workload            291.59    16984.86        5724.98      49.41    4680.75
+
+MEDIAN TIMES (ms)
+Insert                   3158.06     3272.88           3.64
+Point Lookup              482.47      477.53          -1.02
+Range Scan                373.59      372.54          -0.28
+Mixed Workload            291.59    16984.86        5724.98
+
+Cache Statistics (from last iteration):
+-----------------------------------------
+LimitedMemLatencyPageCache:
+  - Cache hits: 7747
+  - Cache misses: 240
+  - Hit ratio: 97.00%
+  - Evictions: 23
+
+MiraLatencyPageCache:
+  - Cache hits: 7750
+  - Cache misses: 274
+  - Hit ratio: 96.59%
+  - Evictions: 18379
+
+Conclusion:
+-----------
+With medium latency: MiraLatencyPageCache outperforms LimitedMemLatencyPageCache for point lookups by 1.02%, but is slower for other operations.

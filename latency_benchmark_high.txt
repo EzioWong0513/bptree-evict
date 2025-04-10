@@ -1,0 +1,43 @@
+Far Memory Latency Benchmark Results (high latency)
+==============================================
+
+Configuration:
+  - Benchmark iterations: 2
+  - Page size: 4096 bytes
+  - Cache size: 64 KB
+  - Latency level: high
+
+
+Performance Results (averaged over 2 iterations):
+--------------------------------------------------------
+Operation               MemCache   MiraCache       Diff (%)  MC StdDev  MC StdDev
+---------------------------------------------------------------------------------
+AVERAGE TIMES (ms)
+Insert                   3201.22     3304.00           3.21      24.13      13.13
+Point Lookup              481.32      481.64           0.07       4.35       6.24
+Range Scan                374.04      375.36           0.35       2.55       0.05
+Mixed Workload            528.15    20032.96        3693.07      31.93     641.26
+
+MEDIAN TIMES (ms)
+Insert                   3201.22     3304.00           3.21
+Point Lookup              481.32      481.64           0.07
+Range Scan                374.04      375.36           0.35
+Mixed Workload            528.15    20032.96        3693.07
+
+Cache Statistics (from last iteration):
+-----------------------------------------
+LimitedMemLatencyPageCache:
+  - Cache hits: 7656
+  - Cache misses: 357
+  - Hit ratio: 95.54%
+  - Evictions: 23
+
+MiraLatencyPageCache:
+  - Cache hits: 7809
+  - Cache misses: 322
+  - Hit ratio: 96.04%
+  - Evictions: 21879
+
+Conclusion:
+-----------
+With high latency: LimitedMemLatencyPageCache outperforms MiraLatencyPageCache for point lookups by 0.07%.
