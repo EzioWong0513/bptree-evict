@@ -362,7 +362,7 @@ void run_multi_benchmark(
     // Define a smaller cache size to force evictions
     // For a 500K dataset with 4KB pages, we'd need ~2GB for full dataset
     // Set cache size to be much smaller to force evictions
-    const size_t CACHE_SIZE_BYTES = 64 * 1024;  // 1MB cache (small enough to cause evictions)
+    const size_t CACHE_SIZE_BYTES = 80 * 1024;  // 1MB cache (small enough to cause evictions)
     std::cout << "Using restricted cache size: " << (CACHE_SIZE_BYTES / 1024) << " KB\n";
     
     // Test with different latency levels

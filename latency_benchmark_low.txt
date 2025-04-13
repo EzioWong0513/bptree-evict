@@ -2,42 +2,42 @@ Far Memory Latency Benchmark Results (low latency)
 ==============================================
 
 Configuration:
-  - Benchmark iterations: 2
+  - Benchmark iterations: 3
   - Page size: 4096 bytes
-  - Cache size: 64 KB
+  - Cache size: 80 KB
   - Latency level: low
 
 
-Performance Results (averaged over 2 iterations):
+Performance Results (averaged over 3 iterations):
 --------------------------------------------------------
 Operation               MemCache   MiraCache       Diff (%)  MC StdDev  MC StdDev
 ---------------------------------------------------------------------------------
 AVERAGE TIMES (ms)
-Insert                   3114.88     3224.34           3.51       3.54       7.13
-Point Lookup              475.31      481.05           1.21       0.22       0.51
-Range Scan                374.07      374.69           0.16       1.15       1.72
-Mixed Workload            141.01    18975.60       13357.09       4.03    4840.93
+Insert                   3339.88     3529.66           5.68     117.60      36.44
+Point Lookup              565.43      594.89           5.21      16.91     112.12
+Range Scan                434.06      411.04          -5.30      63.56      36.70
+Mixed Workload            119.90    18563.05       15382.71       8.73    7417.61
 
 MEDIAN TIMES (ms)
-Insert                   3114.88     3224.34           3.51
-Point Lookup              475.31      481.05           1.21
-Range Scan                374.07      374.69           0.16
-Mixed Workload            141.01    18975.60       13357.09
+Insert                   3373.94     3523.22           4.42
+Point Lookup              564.86      551.18          -2.42
+Range Scan                419.03      408.33          -2.55
+Mixed Workload            122.33    17219.91       13976.73
 
 Cache Statistics (from last iteration):
 -----------------------------------------
 LimitedMemLatencyPageCache:
-  - Cache hits: 7681
-  - Cache misses: 362
-  - Hit ratio: 95.50%
-  - Evictions: 23
+  - Cache hits: 7834
+  - Cache misses: 88
+  - Hit ratio: 98.89%
+  - Evictions: 24
 
 MiraLatencyPageCache:
-  - Cache hits: 7550
-  - Cache misses: 625
-  - Hit ratio: 92.35%
-  - Evictions: 23063
+  - Cache hits: 7920
+  - Cache misses: 115
+  - Hit ratio: 98.57%
+  - Evictions: 23994
 
 Conclusion:
 -----------
-With low latency: LimitedMemLatencyPageCache outperforms MiraLatencyPageCache for point lookups by 1.21%.
+With low latency: MiraLatencyPageCache outperforms LimitedMemLatencyPageCache for point lookups by 2.42%, but is slower for other operations.

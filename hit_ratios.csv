@@ -1,0 +1,13 @@
+Operation,LatencyLevel,BaselineHitRatio,MiraCacheHitRatio
+Insert,low,99.9971,99.9971
+Lookup,low,0.0,0.0
+RangeScan,low,0.0,0.0
+Mixed,low,96.0422,96.371
+Insert,medium,99.9971,99.9971
+Lookup,medium,0.0,0.0
+RangeScan,medium,0.0,0.0
+Mixed,medium,96.4076,96.0492
+Insert,high,99.9971,99.9971
+Lookup,high,0.0,0.0
+RangeScan,high,0.0,0.0
+Mixed,high,96.0048,95.6646

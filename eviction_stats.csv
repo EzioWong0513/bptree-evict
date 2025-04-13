@@ -1,0 +1,4 @@
+LatencyLevel,BaselineEvictions,MiraCacheEvictions,EvictionRatio
+low,23,22737,988.565
+medium,22,22474,1021.55
+high,23,20702,900.087

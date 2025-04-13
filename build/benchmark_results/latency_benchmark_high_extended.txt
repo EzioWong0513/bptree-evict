@@ -1,0 +1,51 @@
+Far Memory Latency Benchmark Extended Results (high latency)
+==========================================================================
+
+Configuration:
+  - Benchmark iterations: 5
+  - Page size: 4096 bytes
+  - Cache size: 640 KB
+  - Latency level: high
+
+
+Performance Results (averaged over 5 iterations):
+--------------------------------------------------------
+Operation               MemCache   MiraCache       Diff (%)  MC StdDev  MC StdDev
+---------------------------------------------------------------------------------
+AVERAGE TIMES (ms)
+Insert                   3144.42     3335.74           6.08      47.41      26.34
+Point Lookup              470.31      469.52          -0.17       4.44       3.22
+Range Scan                366.87      369.28           0.66       0.18       5.24
+Mixed Workload             88.30    21460.40       24203.76       1.74    7441.30
+
+MEDIAN TIMES (ms)
+Insert                   3135.95     3325.25           6.04
+Point Lookup              468.59      469.49           0.19
+Range Scan                366.75      367.00           0.07
+Mixed Workload             87.51    21619.94       24605.21
+
+95th PERCENTILE TIMES (ms)
+Point Lookup              478.11      474.05          -0.85
+Range Scan                367.10      378.65           3.15
+
+CONFIDENCE INTERVALS (95%)
+Point Lookup              470.31 ± 3.89      469.52 ± 2.82
+
+Cache Statistics (from last iteration):
+-----------------------------------------
+LimitedMemLatencyPageCache:
+  - Cache hits: 8027
+  - Cache misses: 0
+  - Hit ratio: 100.00%
+  - Evictions: 23
+
+MiraLatencyPageCache:
+  - Cache hits: 8382
+  - Cache misses: 0
+  - Hit ratio: 100.00%
+  - Evictions: 17051
+
+Conclusion:
+-----------
+With high latency: LimitedMemLatencyPageCache appears to outperform MiraLatencyPageCache for point lookups by 0.19%, but the difference is not statistically significant.
+Note: MiraLatencyPageCache performs significantly more evictions (17051 vs 23), which may indicate more active cache management.

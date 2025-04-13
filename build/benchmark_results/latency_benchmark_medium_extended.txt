@@ -1,0 +1,51 @@
+Far Memory Latency Benchmark Extended Results (medium latency)
+==========================================================================
+
+Configuration:
+  - Benchmark iterations: 5
+  - Page size: 4096 bytes
+  - Cache size: 640 KB
+  - Latency level: medium
+
+
+Performance Results (averaged over 5 iterations):
+--------------------------------------------------------
+Operation               MemCache   MiraCache       Diff (%)  MC StdDev  MC StdDev
+---------------------------------------------------------------------------------
+AVERAGE TIMES (ms)
+Insert                   3103.55     3309.26           6.63       9.83       3.76
+Point Lookup              471.97      473.32           0.28       7.01       8.16
+Range Scan                371.27      367.64          -0.98       7.07       1.23
+Mixed Workload             87.23    15717.62       17919.35       1.59    6584.89
+
+MEDIAN TIMES (ms)
+Insert                   3099.89     3307.63           6.70
+Point Lookup              468.71      468.66          -0.01
+Range Scan                367.72      367.50          -0.06
+Mixed Workload             86.64    14563.33       16708.69
+
+95th PERCENTILE TIMES (ms)
+Point Lookup              484.05      486.89           0.59
+Range Scan                383.78      369.72          -3.66
+
+CONFIDENCE INTERVALS (95%)
+Point Lookup              471.97 ± 6.14      473.32 ± 7.16
+
+Cache Statistics (from last iteration):
+-----------------------------------------
+LimitedMemLatencyPageCache:
+  - Cache hits: 8180
+  - Cache misses: 0
+  - Hit ratio: 100.00%
+  - Evictions: 26
+
+MiraLatencyPageCache:
+  - Cache hits: 8087
+  - Cache misses: 0
+  - Hit ratio: 100.00%
+  - Evictions: 19889
+
+Conclusion:
+-----------
+With medium latency: MiraLatencyPageCache appears to outperform LimitedMemLatencyPageCache for point lookups by 0.01%, but the difference is not statistically significant.
+Note: MiraLatencyPageCache performs significantly more evictions (19889 vs 26), which may indicate more active cache management.
